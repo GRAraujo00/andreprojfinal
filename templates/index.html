@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Upload de Arquivos</title>
+</head>
+
+<body>
+    <h1>Upload de Arquivos</h1>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
+    </form>
+    {% if metadata %}
+    <h2>Metadados do Arquivo:</h2>
+    <ul>
+        <li><strong>Nome:</strong> {{ metadata.filename }}</li>
+        <li><strong>Tamanho:</strong> {{ metadata.size }} bytes</li>
+    </ul>
+    <h2>Conteúdo do Arquivo:</h2>
+    <pre>{{ content }}</pre> {% endif %} {% for message in get_flashed_messages() %}
+    <p style="color: red;">{{ message }}</p>
+    {% endfor %}
+</body>
+
+</html>
